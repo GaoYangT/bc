@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+   <input name="dian" type="button" onclick="submit()">
+
+</body>
+    <script>
+        function submit() {
+            var id = Number("1");
+
+            $.ajax({
+                url: 'http://localhost:8080/getUserByid',
+                type: 'post',
+                data: {
+                    "id":id
+                },
+                success: function (User) {
+                        alert(User);
+                        console.log(User);
+                },
+                error: function (err) {
+                    console.log('你把你闪现给我交了');
+                }
+            })
+
+        }
+
+    </script>
+
+</html>

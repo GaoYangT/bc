@@ -7,12 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
-@Table(name = "user")
+@Table(name = "user_info")
 public class User {
     @Id
-    private Integer id;
+    private Integer user_id;
     @Column(name = "user_name")
     private String userName;
     private Integer user_age;
     private  String user_sex;
+
 }
