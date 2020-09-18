@@ -5,6 +5,8 @@ import com.mapper.bm.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -12,5 +14,9 @@ public class UserService {
 
     public User getUserById(int id){
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    public List selectAll(){
+        return userMapper.selectAll();
     }
 }
