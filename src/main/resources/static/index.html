@@ -7,13 +7,49 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-   <input name="dian" type="button" onclick="submit()">
+<!--   <input name="dian" type="button" onclick="submit()">-->
+<!--   <input name="dian" value="123" type="button" onclick="selectAll()">-->
+    <input type="text" name="selectOne" id="selectOne"></input>
+    <input type="button" value="搜索" onclick="selectOne()">
 
+   <div id="test">
+
+   </div>
+<script type="text/javascript">
+    window.onload=function(){
+        //js代码请求
+    }
+    $(function() {
+        $.ajax({
+            url: 'http://localhost:8080/selectAll',
+            type: 'post',
+            data: {},
+            success: function (data) {
+                var group = data.resList
+                var str="<ul>";
+                for(var i=0;i<group.length;i++){
+                    str += '<div class="item">'+
+                        '<li>ID：'+ group[i].user_id +'</li>'+
+                        '<li>姓名：'+ group[i].userName +'</li>'+
+                        '<li>年龄：'+ group[i].user_age +'</li>'+
+                        '<li>性别：'+ group[i].user_sex +'</li>'+
+                        '</div>';
+                }
+                str+="</ul>";
+                   $("div").append(str);
+            },
+            error: function (err) {
+                console.log('你把你闪现给我交了');
+            }
+        });
+    })
+
+</script>
 </body>
     <script>
-        function submit() {
-            var id = Number("1");
-
+        function selectOne() {
+            var id = $('#selectOne').val();
+            console.log(id);
             $.ajax({
                 url: 'http://localhost:8080/getUserByid',
                 type: 'post',
@@ -28,7 +64,6 @@
                     console.log('你把你闪现给我交了');
                 }
             })
-
         }
 
     </script>
